@@ -1,0 +1,225 @@
+        :root {
+            --bg: #030712;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --primary: #22d3ee;
+            --secondary: #818cf8;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --accent: #c084fc;
+            --border: rgba(255, 255, 255, 0.08);
+            --transition-smooth: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; 
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* ===== INTERACTIVE ELEMENTS ===== */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+            transition: transform 0.15s ease-out;
+        }
+
+        .scroll-watcher {
+            height: 3px;
+            position: fixed;
+            top: 0;
+            z-index: 1001;
+            background-color: var(--primary);
+            width: 0%;
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -1px;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* ===== LAYOUT ===== */
+        .hero {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 900;
+            line-height: 0.85;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 30%, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: var(--transition-smooth);
+        }
+
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-tag {
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .section h2 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .desc {
+            color: var(--text-dim);
+            font-size: 1.15rem;
+            max-width: 750px;
+            margin-bottom: 50px;
+        }
+
+        /* ===== HARDWARE GRID ===== */
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .hw-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 35px 25px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        /* Dynamic Spotlight */
+        .hw-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(34, 211, 238, 0.12) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+
+        .hw-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(17, 24, 39, 0.9);
+        }
+
+        .hw-card:hover::before { opacity: 1; }
+
+        .hw-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+        }
+
+        .hw-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .hw-usage {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        footer {
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* ===== MOBILE ADAPTATION ===== */
+        @media (max-width: 768px) {
+            * { cursor: auto; }
+            #cursor { display: none; }
+            .nav-links { display: none; }
+            .section h2 { font-size: 2.2rem; }
+            .hero h1 { font-size: 3.5rem; }
+        }
