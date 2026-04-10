@@ -1,16 +1,212 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Infografía interactiva en React sobre los tipos de hardware."
-    />
-    <title>Tipos de Hardware | Infografía React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Hardware | Especificaciones Técnicas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="cursor"></div>
+    <div class="scroll-watcher" id="progress"></div>
+
+    <nav>
+        <div class="brand"></div>
+        <div class="nav-links">
+            <a href="#input">Entrada</a>
+            <a href="#output">Salida</a>
+            <a href="#storage">Almacén</a>
+            <a href="#proc">Proceso</a>
+            <a href="#comm">Comunicación</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>TIPOS DE<br>HARDWARE</h1>
+        <p>Anatomía funcional de los sistemas informáticos modernos bajo estándares profesionales.</p>
+    </header>
+
+    <div class="content-container">
+        
+        <!-- ENTRADA -->
+        <section class="section" id="input">
+            <span class="section-tag">// INPUT_LAYER</span>
+            <h2>Hardware de Entrada</h2>
+            <p class="desc">Periféricos encargados de la captura de datos externos para ser transformados en señales digitales procesables.</p>
+            <div class="hardware-grid">
+                <div class="hw-card">
+                    <span class="hw-icon">⌨️</span>
+                    <div class="hw-name">Teclado</div>
+                    <p class="hw-usage">Introduce datos alfanuméricos y comandos mediante el cierre de circuitos en una matriz de interruptores.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🖱️</span>
+                    <div class="hw-name">Mouse</div>
+                    <p class="hw-usage">Traduce el movimiento físico o detección óptica en vectores de posición sobre la interfaz gráfica.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🎙️</span>
+                    <div class="hw-name">Micrófono</div>
+                    <p class="hw-usage">Convierte ondas mecánicas sonoras en impulsos eléctricos para la digitalización de audio.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">📄</span>
+                    <div class="hw-name">Escáner</div>
+                    <p class="hw-usage">Analiza ópticamente imágenes o textos físicos para convertirlos en representaciones de mapas de bits.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">📷</span>
+                    <div class="hw-name">Webcam</div>
+                    <p class="hw-usage">Sensor de imagen digital que captura fotogramas secuenciales para transmisiones de video en vivo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SALIDA -->
+        <section class="section" id="output">
+            <span class="section-tag">// OUTPUT_LAYER</span>
+            <h2>Hardware de Salida</h2>
+            <p class="desc">Dispositivos que transforman los resultados binarios del procesamiento en señales perceptibles por el usuario.</p>
+            <div class="hardware-grid">
+                <div class="hw-card">
+                    <span class="hw-icon">🖥️</span>
+                    <div class="hw-name">Monitor</div>
+                    <p class="hw-usage">Genera una representación visual mediante la activación de subpíxeles en paneles LED, OLED o IPS.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🔊</span>
+                    <div class="hw-name">Altavoces</div>
+                    <p class="hw-usage">Transducen señales eléctricas analógicas en energía acústica para la reproducción de sonido.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🖨️</span>
+                    <div class="hw-name">Impresora</div>
+                    <p class="hw-usage">Plasma datos digitales en sustratos físicos utilizando tecnologías de inyección térmica o tóner láser.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🎧</span>
+                    <div class="hw-name">Auriculares</div>
+                    <p class="hw-usage">Ofrece una salida de audio personalizada con aislamiento acústico mediante controladores dinámicos.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">📽️</span>
+                    <div class="hw-name">Proyector</div>
+                    <p class="hw-usage">Amplifica y proyecta haces de luz modulados para mostrar imágenes en superficies de gran escala.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ALMACENAMIENTO -->
+        <section class="section" id="storage">
+            <span class="section-tag">// DATA_PERSISTENCE</span>
+            <h2>Hardware de Almacenamiento</h2>
+            <p class="desc">Medios físicos diseñados para retener información de forma persistente, garantizando la integridad de los datos sin energía.</p>
+            <div class="hardware-grid">
+                <div class="hw-card">
+                    <span class="hw-icon">⚡</span>
+                    <div class="hw-name">SSD NVMe</div>
+                    <p class="hw-usage">Utiliza chips de memoria NAND Flash para accesos de datos casi instantáneos sin partes móviles.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">💿</span>
+                    <div class="hw-name">HDD</div>
+                    <p class="hw-usage">Almacenamiento masivo que emplea platos magnéticos y cabezales mecánicos para guardar bits de datos.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🔌</span>
+                    <div class="hw-name">USB Flash</div>
+                    <p class="hw-usage">Dispositivo de almacenamiento extraíble que implementa el protocolo USB para transporte de archivos.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🎴</span>
+                    <div class="hw-name">Tarjeta SD</div>
+                    <p class="hw-usage">Memoria flash de alta densidad optimizada para dispositivos portátiles y captura de medios.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">📀</span>
+                    <div class="hw-name">Blu-ray</div>
+                    <p class="hw-usage">Soporte de lectura/escritura óptica que usa láser violeta para comprimir datos en alta definición.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESAMIENTO -->
+        <section class="section" id="proc">
+            <span class="section-tag">// COMPUTATION_CORE</span>
+            <h2>Hardware de Procesamiento</h2>
+            <p class="desc">Componentes que conforman la unidad lógica central, ejecutando algoritmos y gestionando el flujo de instrucciones.</p>
+            <div class="hardware-grid">
+                <div class="hw-card">
+                    <span class="hw-icon">🧠</span>
+                    <div class="hw-name">CPU</div>
+                    <p class="hw-usage">Cerebro del sistema que procesa todas las operaciones aritméticas y lógicas de los programas.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🎮</span>
+                    <div class="hw-name">GPU</div>
+                    <p class="hw-usage">Procesador especializado en la aceleración de gráficos y cálculos matemáticos paralelos.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">📚</span>
+                    <div class="hw-name">Memoria RAM</div>
+                    <p class="hw-usage">Almacén de datos volátil de alta velocidad que sirve como espacio de trabajo para la CPU.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🔌</span>
+                    <div class="hw-name">Placa Base</div>
+                    <p class="hw-usage">El hub central donde se conectan e intercambian datos todos los componentes electrónicos.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🔋</span>
+                    <div class="hw-name">Fuente de Poder</div>
+                    <p class="hw-usage">Convierte y regula la tensión de la red eléctrica en los voltajes DC específicos del hardware.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMUNICACIÓN -->
+        <section class="section" id="comm">
+            <span class="section-tag">// NETWORKING_STACK</span>
+            <h2>Hardware de Comunicación</h2>
+            <p class="desc">Interfaces y dispositivos encargados de la interconexión, transmisión y recepción de datos entre sistemas remotos.</p>
+            <div class="hardware-grid">
+                <div class="hw-card">
+                    <span class="hw-icon">📡</span>
+                    <div class="hw-name">Router</div>
+                    <p class="hw-usage">Gestiona y enruta los paquetes de datos entre diferentes redes, asegurando la entrega al destino correcto.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🛜</span>
+                    <div class="hw-name">Tarjeta Wi-Fi</div>
+                    <p class="hw-usage">Módulo que permite la transmisión de datos mediante ondas de radio siguiendo los estándares IEEE 802.11.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🌐</span>
+                    <div class="hw-name">Módem</div>
+                    <p class="hw-usage">Modula y demodula señales para permitir la conexión de datos a través de líneas telefónicas o fibra óptica.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">🔀</span>
+                    <div class="hw-name">Switch</div>
+                    <p class="hw-usage">Conecta múltiples dispositivos en una red local (LAN) dirigiendo los datos solo al puerto del destinatario.</p>
+                </div>
+                <div class="hw-card">
+                    <span class="hw-icon">📲</span>
+                    <div class="hw-name">Adaptador Bluetooth</div>
+                    <p class="hw-usage">Facilita la comunicación inalámbrica de corto alcance para el intercambio de datos entre periféricos.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>INFOGRAFÍA TÉCNICA PRO &bull; SISTEMAS HARDWARE &bull; 2024</p>
+    </footer>
+
+    <script src="app.js">
+        
+    </script>
+</body>
 </html>
