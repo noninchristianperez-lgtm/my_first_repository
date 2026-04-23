@@ -43,6 +43,7 @@
       left: 0;
       right: 0;
       background: rgba(15, 23, 42, 0.98);
+      -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
       padding: 0.8rem 2rem;
       z-index: 1000;
@@ -349,13 +350,14 @@
 
     /* Footer */
     footer {
-      text-align: center;
-      padding: 2rem;
+      padding: 3rem 2rem;
       border-top: 1px solid rgba(255,255,255,0.1);
-      color: var(--text-secondary);
-      font-size: 0.85rem;
+      background: rgba(15, 23, 42, 0.6);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
     }
- .footer-content {
+
+    .footer-content {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -440,8 +442,9 @@
 
   <section class="hero" id="inicio">
     <div class="hero-content">
+      <span class="hero-badge"></span>
       <h1>LENGUAJES DE PROGRAMACIÓN</h1>
-
+      
     </div>
   </section>
 
@@ -615,13 +618,14 @@
           <span class="tag">OS / Drivers</span>
         </div>
       </div>
-    </
+    </div>
   </section>
 
-  <footer >
-    <div class = "footer-content">
-    <p class = "footer-copyright">Afiche Informativo - <strong>Lenguajes de Programación - Por Jonathan Christian & Luis Pitty</strong></p>
-    <p style="margin-top: 0.3rem; opacity: 0.5;">© 2024</p></div>
+<footer role="contentinfo">
+    <div class="footer-content">
+      <p>Afiche Informativo - <strong>Lenguajes de Programación - Por Jonathan Christian & Luis Pitty</strong></p>
+      <p class="footer-copyright">© 2024</p>
+    </div>
   </footer>
 
   <script>
