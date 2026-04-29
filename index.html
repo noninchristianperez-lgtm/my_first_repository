@@ -1,212 +1,288 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipos de Hardware | Especificaciones Técnicas</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flash Cards - Hardware</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <div id="cursor"></div>
-    <div class="scroll-watcher" id="progress"></div>
-
-    <nav>
-        <div class="brand"></div>
-        <div class="nav-links">
-            <a href="#input">Entrada</a>
-            <a href="#output">Salida</a>
-            <a href="#storage">Almacén</a>
-            <a href="#proc">Proceso</a>
-            <a href="#comm">Comunicación</a>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <h1>TIPOS DE<br>HARDWARE</h1>
-        <p>Anatomía funcional de los sistemas informáticos modernos bajo estándares profesionales.</p>
-    </header>
-
-    <div class="content-container">
-        
-        <!-- ENTRADA -->
-        <section class="section" id="input">
-            <span class="section-tag">// INPUT_LAYER</span>
-            <h2>Hardware de Entrada</h2>
-            <p class="desc">Periféricos encargados de la captura de datos externos para ser transformados en señales digitales procesables.</p>
-            <div class="hardware-grid">
-                <div class="hw-card">
-                    <span class="hw-icon">⌨️</span>
-                    <div class="hw-name">Teclado</div>
-                    <p class="hw-usage">Introduce datos alfanuméricos y comandos mediante el cierre de circuitos en una matriz de interruptores.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🖱️</span>
-                    <div class="hw-name">Mouse</div>
-                    <p class="hw-usage">Traduce el movimiento físico o detección óptica en vectores de posición sobre la interfaz gráfica.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🎙️</span>
-                    <div class="hw-name">Micrófono</div>
-                    <p class="hw-usage">Convierte ondas mecánicas sonoras en impulsos eléctricos para la digitalización de audio.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">📄</span>
-                    <div class="hw-name">Escáner</div>
-                    <p class="hw-usage">Analiza ópticamente imágenes o textos físicos para convertirlos en representaciones de mapas de bits.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">📷</span>
-                    <div class="hw-name">Webcam</div>
-                    <p class="hw-usage">Sensor de imagen digital que captura fotogramas secuenciales para transmisiones de video en vivo.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SALIDA -->
-        <section class="section" id="output">
-            <span class="section-tag">// OUTPUT_LAYER</span>
-            <h2>Hardware de Salida</h2>
-            <p class="desc">Dispositivos que transforman los resultados binarios del procesamiento en señales perceptibles por el usuario.</p>
-            <div class="hardware-grid">
-                <div class="hw-card">
-                    <span class="hw-icon">🖥️</span>
-                    <div class="hw-name">Monitor</div>
-                    <p class="hw-usage">Genera una representación visual mediante la activación de subpíxeles en paneles LED, OLED o IPS.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🔊</span>
-                    <div class="hw-name">Altavoces</div>
-                    <p class="hw-usage">Transducen señales eléctricas analógicas en energía acústica para la reproducción de sonido.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🖨️</span>
-                    <div class="hw-name">Impresora</div>
-                    <p class="hw-usage">Plasma datos digitales en sustratos físicos utilizando tecnologías de inyección térmica o tóner láser.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🎧</span>
-                    <div class="hw-name">Auriculares</div>
-                    <p class="hw-usage">Ofrece una salida de audio personalizada con aislamiento acústico mediante controladores dinámicos.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">📽️</span>
-                    <div class="hw-name">Proyector</div>
-                    <p class="hw-usage">Amplifica y proyecta haces de luz modulados para mostrar imágenes en superficies de gran escala.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ALMACENAMIENTO -->
-        <section class="section" id="storage">
-            <span class="section-tag">// DATA_PERSISTENCE</span>
-            <h2>Hardware de Almacenamiento</h2>
-            <p class="desc">Medios físicos diseñados para retener información de forma persistente, garantizando la integridad de los datos sin energía.</p>
-            <div class="hardware-grid">
-                <div class="hw-card">
-                    <span class="hw-icon">⚡</span>
-                    <div class="hw-name">SSD NVMe</div>
-                    <p class="hw-usage">Utiliza chips de memoria NAND Flash para accesos de datos casi instantáneos sin partes móviles.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">💿</span>
-                    <div class="hw-name">HDD</div>
-                    <p class="hw-usage">Almacenamiento masivo que emplea platos magnéticos y cabezales mecánicos para guardar bits de datos.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🔌</span>
-                    <div class="hw-name">USB Flash</div>
-                    <p class="hw-usage">Dispositivo de almacenamiento extraíble que implementa el protocolo USB para transporte de archivos.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🎴</span>
-                    <div class="hw-name">Tarjeta SD</div>
-                    <p class="hw-usage">Memoria flash de alta densidad optimizada para dispositivos portátiles y captura de medios.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">📀</span>
-                    <div class="hw-name">Blu-ray</div>
-                    <p class="hw-usage">Soporte de lectura/escritura óptica que usa láser violeta para comprimir datos en alta definición.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROCESAMIENTO -->
-        <section class="section" id="proc">
-            <span class="section-tag">// COMPUTATION_CORE</span>
-            <h2>Hardware de Procesamiento</h2>
-            <p class="desc">Componentes que conforman la unidad lógica central, ejecutando algoritmos y gestionando el flujo de instrucciones.</p>
-            <div class="hardware-grid">
-                <div class="hw-card">
-                    <span class="hw-icon">🧠</span>
-                    <div class="hw-name">CPU</div>
-                    <p class="hw-usage">Cerebro del sistema que procesa todas las operaciones aritméticas y lógicas de los programas.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🎮</span>
-                    <div class="hw-name">GPU</div>
-                    <p class="hw-usage">Procesador especializado en la aceleración de gráficos y cálculos matemáticos paralelos.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">📚</span>
-                    <div class="hw-name">Memoria RAM</div>
-                    <p class="hw-usage">Almacén de datos volátil de alta velocidad que sirve como espacio de trabajo para la CPU.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🔌</span>
-                    <div class="hw-name">Placa Base</div>
-                    <p class="hw-usage">El hub central donde se conectan e intercambian datos todos los componentes electrónicos.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🔋</span>
-                    <div class="hw-name">Fuente de Poder</div>
-                    <p class="hw-usage">Convierte y regula la tensión de la red eléctrica en los voltajes DC específicos del hardware.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- COMUNICACIÓN -->
-        <section class="section" id="comm">
-            <span class="section-tag">// NETWORKING_STACK</span>
-            <h2>Hardware de Comunicación</h2>
-            <p class="desc">Interfaces y dispositivos encargados de la interconexión, transmisión y recepción de datos entre sistemas remotos.</p>
-            <div class="hardware-grid">
-                <div class="hw-card">
-                    <span class="hw-icon">📡</span>
-                    <div class="hw-name">Router</div>
-                    <p class="hw-usage">Gestiona y enruta los paquetes de datos entre diferentes redes, asegurando la entrega al destino correcto.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🛜</span>
-                    <div class="hw-name">Tarjeta Wi-Fi</div>
-                    <p class="hw-usage">Módulo que permite la transmisión de datos mediante ondas de radio siguiendo los estándares IEEE 802.11.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🌐</span>
-                    <div class="hw-name">Módem</div>
-                    <p class="hw-usage">Modula y demodula señales para permitir la conexión de datos a través de líneas telefónicas o fibra óptica.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">🔀</span>
-                    <div class="hw-name">Switch</div>
-                    <p class="hw-usage">Conecta múltiples dispositivos en una red local (LAN) dirigiendo los datos solo al puerto del destinatario.</p>
-                </div>
-                <div class="hw-card">
-                    <span class="hw-icon">📲</span>
-                    <div class="hw-name">Adaptador Bluetooth</div>
-                    <p class="hw-usage">Facilita la comunicación inalámbrica de corto alcance para el intercambio de datos entre periféricos.</p>
-                </div>
-            </div>
-        </section>
-
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">Flash cards</p>
+      <h1>Conociendo el Hardware</h1>
+      <p class="intro">Tarjetas interactivas basadas en el contenido del PPTX, manteniendo el orden de arriba hacia abajo y el texto completo.</p>
     </div>
 
-    <footer>
-        <p>INFOGRAFÍA TÉCNICA PRO &bull; SISTEMAS HARDWARE &bull; 2024</p>
-    </footer>
+    <button class="control-button" id="flip-all" type="button">Voltear todas</button>
+  </header>
 
-    <script src="app.js">
-        
-    </script>
+  <main class="cards-layout">
+    <article class="flashcard" data-card>
+      <div class="flashcard-inner">
+        <section class="flashcard-face flashcard-front">
+          <span class="card-number">Tarjeta 1</span>
+          <h2>¿Cuál es el tema principal de la presentación?</h2>
+          <p>Haz clic para ver el contenido exacto de la portada.</p>
+        </section>
+        <section class="flashcard-face flashcard-back">
+          <span class="card-number">Portada</span>
+          <h2>CONOCIENDO EL HARDWARE</h2>
+          <div class="card-text">
+            <p>según su función</p>
+            <p>📚 Asignatura</p>
+            <p>Informática / Tecnología</p>
+            <p>👨‍🎓 Estudiante</p>
+            <p>________________</p>
+            <p>📅 Grado</p>
+            <p>________________</p>
+            <p>⌨️ Entrada</p>
+            <p>🖥️ Salida</p>
+            <p>💾 Almacenamiento</p>
+            <p>⚙️ Procesamiento</p>
+            <p>📡 Comunicación</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <article class="flashcard" data-card>
+      <div class="flashcard-inner">
+        <section class="flashcard-face flashcard-front">
+          <span class="card-number">Tarjeta 2</span>
+          <h2>¿Qué es el hardware y cuál es su importancia en una computadora?</h2>
+          <p>Haz clic para ver la respuesta completa.</p>
+        </section>
+        <section class="flashcard-face flashcard-back">
+          <span class="card-number">Introducción</span>
+          <h2>📌 INTRODUCCIÓN</h2>
+          <div class="card-text">
+            <p><strong>¿Qué es el Hardware?</strong></p>
+            <p>El hardware es el conjunto de componentes físicos y tangibles que forman parte de una computadora. Son todas las piezas que se pueden ver y tocar, como el teclado, el monitor, el mouse y el disco duro.</p>
+            <p><strong>Importancia en una Computadora</strong></p>
+            <p>✔ Permite ejecutar el sistema operativo y los programas</p>
+            <p>✔ Procesa y almacena toda la información digital</p>
+            <p>✔ Permite la interacción entre el usuario y la máquina</p>
+            <p>✔ Conecta la computadora con el mundo exterior</p>
+            <p>💻 HARDWARE</p>
+            <p>Componentes físicos que forman y hacen funcionar una computadora</p>
+            <p>Sin hardware, no hay computadora</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <article class="flashcard" data-card>
+      <div class="flashcard-inner">
+        <section class="flashcard-face flashcard-front">
+          <span class="card-number">Tarjeta 3</span>
+          <h2>¿Cuáles son los tipos de hardware?</h2>
+          <p>Haz clic para ver la clasificación completa.</p>
+        </section>
+        <section class="flashcard-face flashcard-back">
+          <span class="card-number">Tipos</span>
+          <h2>🗂️ TIPOS DE HARDWARE</h2>
+          <div class="card-text">
+            <p>⌨️ Hardware de Entrada</p>
+            <p>Introduce datos en la computadora</p>
+            <p>🖥️ Hardware de Salida</p>
+            <p>Muestra los resultados al usuario</p>
+            <p>💾 Hardware de Almacenamiento</p>
+            <p>Guarda la información de forma permanente</p>
+            <p>⚙️ Hardware de Procesamiento</p>
+            <p>Ejecuta instrucciones del sistema</p>
+            <p>📡 Dispositivos de Comunicación</p>
+            <p>Conecta con redes y otros dispositivos</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <article class="flashcard" data-card>
+      <div class="flashcard-inner">
+        <section class="flashcard-face flashcard-front">
+          <span class="card-number">Tarjeta 4</span>
+          <h2>¿Qué es el hardware de entrada y qué dispositivos lo forman?</h2>
+          <p>Haz clic para ver la respuesta completa.</p>
+        </section>
+        <section class="flashcard-face flashcard-back">
+          <span class="card-number">Entrada</span>
+          <h2>⌨️ Hardware de Entrada</h2>
+          <div class="card-text">
+            <p>⌨️ Teclado</p>
+            <p>🖱️ Mouse</p>
+            <p>📷 Cámara web</p>
+            <p>🖊️ Escáner</p>
+            <p>🎤 Micrófono</p>
+            <p><strong>📖 Definición</strong></p>
+            <p>El hardware de entrada es el conjunto de dispositivos que permiten al usuario introducir datos, comandos e información en la computadora para que sean procesados.</p>
+            <p><strong>⚡ Función Principal</strong></p>
+            <p>Capturar y transmitir datos del mundo exterior hacia el procesador de la computadora para su análisis o almacenamiento.</p>
+            <p><strong>🔧 Ejemplos de Dispositivos</strong></p>
+            <p>⌨️ Teclado — Permite ingresar texto y comandos mediante teclas.</p>
+            <p>🖱️ Mouse — Controla el puntero en pantalla para interactuar con la interfaz.</p>
+            <p>📷 Cámara web — Captura imágenes y video en tiempo real.</p>
+            <p>🖊️ Escáner — Digitaliza documentos e imágenes físicas.</p>
+            <p>🎤 Micrófono — Captura la voz y otros sonidos para introducir audio al sistema.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <article class="flashcard" data-card>
+      <div class="flashcard-inner">
+        <section class="flashcard-face flashcard-front">
+          <span class="card-number">Tarjeta 5</span>
+          <h2>¿Qué es el hardware de salida y qué dispositivos lo forman?</h2>
+          <p>Haz clic para ver la respuesta completa.</p>
+        </section>
+        <section class="flashcard-face flashcard-back">
+          <span class="card-number">Salida</span>
+          <h2>🖥️ Hardware de Salida</h2>
+          <div class="card-text">
+            <p>🖥️ Monitor</p>
+            <p>🖨️ Impresora</p>
+            <p>🔊 Altavoces</p>
+            <p>📽️ Proyector</p>
+            <p>🎧 Audífonos</p>
+            <p><strong>📖 Definición</strong></p>
+            <p>El hardware de salida son los dispositivos encargados de presentar o entregar la información procesada al usuario en un formato comprensible (visual, sonoro o impreso).</p>
+            <p><strong>⚡ Función Principal</strong></p>
+            <p>Mostrar, reproducir o imprimir los resultados del procesamiento de datos para que el usuario pueda interpretarlos.</p>
+            <p><strong>🔧 Ejemplos de Dispositivos</strong></p>
+            <p>🖥️ Monitor — Muestra visualmente la información del sistema.</p>
+            <p>🖨️ Impresora — Plasma en papel documentos e imágenes digitales.</p>
+            <p>🔊 Altavoces — Reproducen sonidos, música y alertas del sistema.</p>
+            <p>📽️ Proyector — Proyecta imágenes en superficies grandes.</p>
+            <p>🎧 Audífonos — Permiten escuchar audio de forma individual y privada.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <article class="flashcard" data-card>
+      <div class="flashcard-inner">
+        <section class="flashcard-face flashcard-front">
+          <span class="card-number">Tarjeta 6</span>
+          <h2>¿Qué es el hardware de almacenamiento y qué dispositivos lo forman?</h2>
+          <p>Haz clic para ver la respuesta completa.</p>
+        </section>
+        <section class="flashcard-face flashcard-back">
+          <span class="card-number">Almacenamiento</span>
+          <h2>💾 Hardware de Almacenamiento</h2>
+          <div class="card-text">
+            <p>🗄️ Disco Duro (HDD)</p>
+            <p>⚡ SSD</p>
+            <p>🔌 USB</p>
+            <p>💿 DVD/CD</p>
+            <p>💾 Tarjeta SD</p>
+            <p><strong>📖 Definición</strong></p>
+            <p>El hardware de almacenamiento son los dispositivos que guardan información de forma permanente o temporal, para que pueda ser consultada o utilizada en el futuro.</p>
+            <p><strong>⚡ Función Principal</strong></p>
+            <p>Guardar el sistema operativo, programas, archivos y datos del usuario de manera persistente o temporal.</p>
+            <p><strong>🔧 Ejemplos de Dispositivos</strong></p>
+            <p>🗄️ Disco Duro (HDD) — Almacena grandes cantidades de datos magnéticamente.</p>
+            <p>⚡ SSD — Almacena datos en memoria flash, más rápido que el HDD.</p>
+            <p>🔌 USB — Dispositivo portátil para transferir y almacenar archivos.</p>
+            <p>💿 DVD/CD — Disco óptico para almacenar datos y multimedia.</p>
+            <p>💾 Tarjeta SD — Memoria extraíble usada para guardar archivos en cámaras, teléfonos y computadoras.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <article class="flashcard" data-card>
+      <div class="flashcard-inner">
+        <section class="flashcard-face flashcard-front">
+          <span class="card-number">Tarjeta 7</span>
+          <h2>¿Qué es el hardware de procesamiento y qué dispositivos lo forman?</h2>
+          <p>Haz clic para ver la respuesta completa.</p>
+        </section>
+        <section class="flashcard-face flashcard-back">
+          <span class="card-number">Procesamiento</span>
+          <h2>⚙️ Hardware de Procesamiento</h2>
+          <div class="card-text">
+            <p>🧠 CPU (Procesador)</p>
+            <p>🎮 GPU</p>
+            <p>🃏 RAM</p>
+            <p>🔲 Placa Madre</p>
+            <p>🧮 Chipset</p>
+            <p><strong>📖 Definición</strong></p>
+            <p>El hardware de procesamiento son los componentes que analizan, calculan y ejecutan las instrucciones del sistema operativo y los programas instalados en la computadora.</p>
+            <p><strong>⚡ Función Principal</strong></p>
+            <p>Realizar cálculos matemáticos, lógicos y controlar el flujo de información entre todos los componentes del sistema.</p>
+            <p><strong>🔧 Ejemplos de Dispositivos</strong></p>
+            <p>🧠 CPU (Procesador) — Es el cerebro de la computadora; ejecuta instrucciones.</p>
+            <p>🎮 GPU — Procesa gráficos y acelera tareas visuales.</p>
+            <p>🃏 RAM — Memoria temporal que almacena datos en uso activo.</p>
+            <p>🔲 Placa Madre — Conecta y coordina todos los componentes del sistema.</p>
+            <p>🧮 Chipset — Administra la comunicación entre el procesador, la memoria y otros componentes.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <article class="flashcard" data-card>
+      <div class="flashcard-inner">
+        <section class="flashcard-face flashcard-front">
+          <span class="card-number">Tarjeta 8</span>
+          <h2>¿Qué son los dispositivos de comunicación y cuáles son sus ejemplos?</h2>
+          <p>Haz clic para ver la respuesta completa.</p>
+        </section>
+        <section class="flashcard-face flashcard-back">
+          <span class="card-number">Comunicación</span>
+          <h2>📡 Dispositivos de Comunicación</h2>
+          <div class="card-text">
+            <p>📶 Tarjeta de Red</p>
+            <p>📡 Módem</p>
+            <p>🌐 Router</p>
+            <p>🔵 Bluetooth</p>
+            <p>📱 Adaptador Wi‑Fi</p>
+            <p><strong>📖 Definición</strong></p>
+            <p>Los dispositivos de comunicación son componentes que permiten a la computadora intercambiar datos con otras máquinas, redes o internet de forma alámbrica o inalámbrica.</p>
+            <p><strong>⚡ Función Principal</strong></p>
+            <p>Conectar la computadora a redes locales o a internet para el intercambio de información con otros dispositivos o sistemas.</p>
+            <p><strong>🔧 Ejemplos de Dispositivos</strong></p>
+            <p>📶 Tarjeta de Red — Permite conectar la PC a redes cableadas (Ethernet).</p>
+            <p>📡 Módem — Convierte señales digitales en analógicas para internet.</p>
+            <p>🌐 Router — Distribuye la señal de internet a múltiples dispositivos.</p>
+            <p>🔵 Bluetooth — Conecta dispositivos cercanos sin cables.</p>
+            <p>📱 Adaptador Wi‑Fi — Permite conectar la computadora a redes inalámbricas.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <article class="flashcard" data-card>
+      <div class="flashcard-inner">
+        <section class="flashcard-face flashcard-front">
+          <span class="card-number">Tarjeta 9</span>
+          <h2>¿Cuál es la conclusión de la presentación?</h2>
+          <p>Haz clic para ver el cierre completo.</p>
+        </section>
+        <section class="flashcard-face flashcard-back">
+          <span class="card-number">Conclusión</span>
+          <h2>🏁 CONCLUSIÓN</h2>
+          <div class="card-text">
+            <p><strong>Resumen de lo aprendido</strong></p>
+            <p>En esta presentación conocimos los cinco tipos de hardware que conforman una computadora. Cada componente cumple una función específica e indispensable para el correcto funcionamiento del sistema.</p>
+            <p>⌨️ Entrada</p>
+            <p>Recibe datos del usuario</p>
+            <p>🖥️ Salida</p>
+            <p>Muestra los resultados</p>
+            <p>💾 Almacenamiento</p>
+            <p>Guarda la información</p>
+            <p>⚙️ Procesamiento</p>
+            <p>Ejecuta instrucciones</p>
+            <p>📡 Comunicación</p>
+            <p>Conecta con el exterior</p>
+            <p>💡 Conocer los tipos de hardware nos permite usar mejor la tecnología, solucionar problemas básicos y entender cómo funciona una computadora por dentro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
