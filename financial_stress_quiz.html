@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Stress Flashcards</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    color: #fff;
+  }
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+    text-align: center;
+    color: #e0e0ff;
+  }
+  .subtitle { font-size: 0.85rem; color: #a0a8d0; margin-bottom: 18px; text-align: center; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 10px; margin-bottom: 18px; }
+  .tab {
+    padding: 8px 20px; border-radius: 20px; cursor: pointer;
+    font-size: 0.85rem; font-weight: 600; border: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .tab.active { background: #4f46e5; border-color: #818cf8; color: #fff; }
+  .tab:not(.active) { background: rgba(255,255,255,0.07); color: #a0a8d0; }
+  .tab:not(.active):hover { background: rgba(255,255,255,0.13); }
+
+  /* FLASHCARDS */
+  #flashcard-section { width: 100%; max-width: 540px; }
+  .progress-bar-wrap { background: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; margin-bottom: 10px; }
+  .progress-bar { height: 6px; border-radius: 10px; background: #4f46e5; transition: width 0.4s; }
+  .card-counter { text-align: right; font-size: 0.78rem; color: #a0a8d0; margin-bottom: 12px; }
+
+  .card-wrap { perspective: 1000px; height: 220px; cursor: pointer; margin-bottom: 16px; }
+  .card {
+    width: 100%; height: 100%;
+    position: relative; transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(.4,0,.2,1);
+    border-radius: 16px;
+  }
+  .card.flipped { transform: rotateY(180deg); }
+  .card-face {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; border-radius: 16px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 22px; text-align: center;
+  }
+  .card-front {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    box-shadow: 0 8px 30px rgba(79,70,229,0.4);
+  }
+  .card-back {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    transform: rotateY(180deg);
+    box-shadow: 0 8px 30px rgba(14,165,233,0.4);
+  }
+  .card-label { font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.7; margin-bottom: 10px; }
+  .card-text { font-size: 1rem; line-height: 1.5; font-weight: 500; }
+  .card-hint { font-size: 0.72rem; opacity: 0.6; margin-top: 12px; }
+
+  .fc-btns { display: flex; gap: 10px; justify-content: center; }
+  .fc-btn {
+    padding: 10px 22px; border-radius: 10px; border: none;
+    font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-prev { background: rgba(255,255,255,0.1); color: #e0e0ff; }
+  .btn-prev:hover { background: rgba(255,255,255,0.18); }
+  .btn-next { background: #4f46e5; color: #fff; }
+  .btn-next:hover { background: #4338ca; }
+  .btn-shuffle { background: rgba(124,58,237,0.3); color: #c4b5fd; }
+  .btn-shuffle:hover { background: rgba(124,58,237,0.5); }
+
+  /* QUIZ */
+  #quiz-section { width: 100%; max-width: 540px; display: none; }
+  .quiz-q { background: rgba(255,255,255,0.06); border-radius: 14px; padding: 18px; margin-bottom: 14px; }
+  .quiz-q p { font-size: 0.95rem; margin-bottom: 14px; color: #e0e0ff; font-weight: 600; }
+  .options { display: flex; flex-direction: column; gap: 9px; }
+  .option {
+    background: rgba(255,255,255,0.07); border: 2px solid transparent;
+    border-radius: 10px; padding: 11px 14px; cursor: pointer;
+    font-size: 0.85rem; color: #c4cff0; transition: all 0.2s; text-align: left;
+  }
+  .option:hover:not(.disabled) { background: rgba(79,70,229,0.25); border-color: #6366f1; color: #fff; }
+  .option.correct { background: rgba(16,185,129,0.2); border-color: #10b981; color: #6ee7b7; }
+  .option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #fca5a5; }
+  .option.disabled { cursor: default; }
+
+  .quiz-score {
+    text-align: center; background: rgba(79,70,229,0.2);
+    border-radius: 14px; padding: 20px; margin-bottom: 14px;
+  }
+  .quiz-score .big { font-size: 2.5rem; font-weight: 700; color: #818cf8; }
+  .quiz-score p { color: #a0a8d0; margin-top: 6px; }
+  .btn-restart {
+    display: block; margin: 0 auto; padding: 12px 30px;
+    background: #4f46e5; color: #fff; border: none; border-radius: 10px;
+    font-size: 1rem; font-weight: 600; cursor: pointer;
+  }
+  .btn-restart:hover { background: #4338ca; }
+
+  /* VOCAB */
+  #vocab-section { width: 100%; max-width: 540px; display: none; }
+  .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .vocab-card {
+    background: rgba(255,255,255,0.06); border-radius: 12px;
+    padding: 14px; border-left: 3px solid #4f46e5;
+  }
+  .vocab-word { font-weight: 700; color: #818cf8; font-size: 0.9rem; margin-bottom: 4px; }
+  .vocab-def { font-size: 0.78rem; color: #a0a8d0; line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<h1>💰 Financial Stress Questionnaire</h1>
+<p class="subtitle">Aprende las 9 preguntas y respuestas — 3 modos de estudio</p>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('flashcard')">🃏 Flashcards</div>
+  <div class="tab" onclick="switchTab('quiz')">🧠 Quiz</div>
+  <div class="tab" onclick="switchTab('vocab')">📖 Vocabulario</div>
+</div>
+
+<!-- FLASHCARDS -->
+<div id="flashcard-section">
+  <div class="progress-bar-wrap"><div class="progress-bar" id="fc-progress"></div></div>
+  <div class="card-counter" id="fc-counter">1 / 9</div>
+  <div class="card-wrap" onclick="flipCard()">
+    <div class="card" id="the-card">
+      <div class="card-face card-front">
+        <div class="card-label">❓ Question</div>
+        <div class="card-text" id="fc-question"></div>
+        <div class="card-hint">Toca para ver la respuesta</div>
+      </div>
+      <div class="card-face card-back">
+        <div class="card-label">✅ Answer</div>
+        <div class="card-text" id="fc-answer"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-btns">
+    <button class="fc-btn btn-prev" onclick="fcNav(-1)">← Anterior</button>
+    <button class="fc-btn btn-shuffle" onclick="shuffleCards()">🔀 Mezclar</button>
+    <button class="fc-btn btn-next" onclick="fcNav(1)">Siguiente →</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz-section">
+  <div id="quiz-score-box" style="display:none">
+    <div class="quiz-score">
+      <div class="big" id="score-text"></div>
+      <p id="score-msg"></p>
+    </div>
+    <button class="btn-restart" onclick="startQuiz()">🔄 Intentar de nuevo</button>
+  </div>
+  <div id="quiz-questions"></div>
+</div>
+
+<!-- VOCAB -->
+<div id="vocab-section">
+  <div class="vocab-grid" id="vocab-grid"></div>
+</div>
+
+<script>
+const QA = [
+  {
+    q: "What is financial stress and why is it common?",
+    a: "Financial stress is a feeling of pressure or worry about money. It is common because many of us, at some point, find ourselves faced with a financial crisis or the pressure of mounting debt."
+  },
+  {
+    q: "What are some causes of financial problems mentioned in the text?",
+    a: "Job loss, mounting debt, unexpected expenses, or a combination of factors. Whether it's credit card debt, an inability to pay bills, or a loss of income, financial problems can feel overwhelming."
+  },
+  {
+    q: "According to the APA study, what percentage of Americans feel stress about money?",
+    a: "72 percent of Americans feel stressed about money at least some of the time, according to a study by the American Psychological Association (APA)."
+  },
+  {
+    q: "How can financial stress affect a person's mental health?",
+    a: "Financial stress can lead to anxiety, depression, substance abuse, and sleep problems. It can also cause physical symptoms like headaches, gastrointestinal problems, and high blood pressure."
+  },
+  {
+    q: "In what ways can financial problems impact relationships?",
+    a: "Money is often cited as the most common cause of arguments between partners. It can also cause you to withdraw from social life or lead to tension and conflict with family members."
+  },
+  {
+    q: "What negative emotions can financial stress cause?",
+    a: "It can cause a sense of shame, fear, anger, and hopelessness. You may feel a sense of despair or feel overwhelmed by the situation."
+  },
+  {
+    q: "How can exercise help reduce stress?",
+    a: "Exercise releases endorphins that improve your mood and help burn off the tension of stress. It can help you clear your mind and increase your energy levels."
+  },
+  {
+    q: "Why is sleep important when dealing with stress?",
+    a: "Getting enough sleep helps you maintain your perspective and cope with the challenges of the day. Lack of sleep can make you more vulnerable to stress."
+  },
+  {
+    q: "What are some examples of relaxation techniques mentioned?",
+    a: "Practicing relaxation techniques such as deep breathing, meditation, or yoga can help reduce overall stress levels and improve your sense of well-being."
+  }
+];
+
+const VOCAB = [
+  { word: "financial stress", def: "presión o preocupación por el dinero" },
+  { word: "mounting debt", def: "deuda que va creciendo" },
+  { word: "overwhelming", def: "abrumador, que se siente demasiado" },
+  { word: "anxiety", def: "ansiedad, nerviosismo intenso" },
+  { word: "depression", def: "depresión, tristeza profunda" },
+  { word: "hopelessness", def: "desesperanza, sin esperanza" },
+  { word: "endorphins", def: "endorfinas, sustancias que mejoran el ánimo" },
+  { word: "vulnerable", def: "vulnerable, susceptible al daño" },
+  { word: "well-being", def: "bienestar general" },
+  { word: "perspective", def: "perspectiva, punto de vista equilibrado" },
+  { word: "substance abuse", def: "abuso de sustancias" },
+  { word: "gastrointestinal", def: "relacionado con el estómago e intestinos" },
+];
+
+// --- FLASHCARDS ---
+let fcOrder = [...Array(QA.length).keys()];
+let fcIndex = 0;
+
+function renderFC() {
+  const i = fcOrder[fcIndex];
+  document.getElementById('fc-question').textContent = QA[i].q;
+  document.getElementById('fc-answer').textContent = QA[i].a;
+  document.getElementById('fc-counter').textContent = `${fcIndex+1} / ${QA.length}`;
+  document.getElementById('fc-progress').style.width = `${((fcIndex+1)/QA.length)*100}%`;
+  document.getElementById('the-card').classList.remove('flipped');
+}
+
+function flipCard() {
+  document.getElementById('the-card').classList.toggle('flipped');
+}
+
+function fcNav(dir) {
+  fcIndex = (fcIndex + dir + QA.length) % QA.length;
+  renderFC();
+}
+
+function shuffleCards() {
+  fcOrder = fcOrder.sort(() => Math.random() - 0.5);
+  fcIndex = 0;
+  renderFC();
+}
+
+// --- QUIZ ---
+let quizAnswered = 0;
+let quizCorrect = 0;
+
+function startQuiz() {
+  quizAnswered = 0; quizCorrect = 0;
+  document.getElementById('quiz-score-box').style.display = 'none';
+  const container = document.getElementById('quiz-questions');
+  container.innerHTML = '';
+
+  const shuffled = [...QA].sort(() => Math.random() - 0.5);
+
+  shuffled.forEach((item, idx) => {
+    const wrong = QA.filter(x => x !== item).sort(() => Math.random()-0.5).slice(0,3).map(x => x.a);
+    const opts = [...wrong, item.a].sort(() => Math.random()-0.5);
+
+    const div = document.createElement('div');
+    div.className = 'quiz-q';
+    div.innerHTML = `<p>Q${idx+1}: ${item.q}</p><div class="options" id="opts-${idx}"></div>`;
+    container.appendChild(div);
+
+    const optsDiv = div.querySelector(`#opts-${idx}`);
+    opts.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = 'option';
+      btn.textContent = opt;
+      btn.onclick = () => checkAnswer(btn, opt, item.a, optsDiv);
+      optsDiv.appendChild(btn);
+    });
+  });
+}
+
+function checkAnswer(btn, selected, correct, container) {
+  if (container.querySelector('.correct, .wrong')) return;
+  quizAnswered++;
+  Array.from(container.children).forEach(b => {
+    b.classList.add('disabled');
+    if (b.textContent === correct) b.classList.add('correct');
+    else if (b === btn) b.classList.add('wrong');
+  });
+  if (selected === correct) quizCorrect++;
+  if (quizAnswered === QA.length) showScore();
+}
+
+function showScore() {
+  setTimeout(() => {
+    document.getElementById('quiz-questions').innerHTML = '';
+    const box = document.getElementById('quiz-score-box');
+    box.style.display = 'block';
+    const pct = Math.round((quizCorrect/QA.length)*100);
+    document.getElementById('score-text').textContent = `${quizCorrect} / ${QA.length}`;
+    let msg = pct === 100 ? "🏆 ¡Perfecto! Lo sabes todo." :
+              pct >= 70 ? "💪 ¡Muy bien! Sigue repasando." :
+              "📚 Practica más con los flashcards.";
+    document.getElementById('score-msg').textContent = msg;
+  }, 600);
+}
+
+// --- VOCAB ---
+function renderVocab() {
+  const g = document.getElementById('vocab-grid');
+  g.innerHTML = VOCAB.map(v => `
+    <div class="vocab-card">
+      <div class="vocab-word">${v.word}</div>
+      <div class="vocab-def">${v.def}</div>
+    </div>
+  `).join('');
+}
+
+// --- TABS ---
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach((t,i) => {
+    t.classList.toggle('active', ['flashcard','quiz','vocab'][i] === tab);
+  });
+  document.getElementById('flashcard-section').style.display = tab === 'flashcard' ? 'block' : 'none';
+  document.getElementById('quiz-section').style.display = tab === 'quiz' ? 'block' : 'none';
+  document.getElementById('vocab-section').style.display = tab === 'vocab' ? 'block' : 'none';
+  if (tab === 'quiz') startQuiz();
+}
+
+// INIT
+renderFC();
+renderVocab();
+</script>
+</body>
+</html>
